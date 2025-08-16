@@ -12,7 +12,7 @@ function getFlipUnit(unit) {
 }
 
 
-const customDate = "2025-08-20T15:00:00";
+const customDate = "2026-08-20T15:00:00";
 
 let prevDays = 0; 
 let prevHours = 0; 
