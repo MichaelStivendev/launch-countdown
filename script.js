@@ -12,7 +12,9 @@ function getFlipUnit(unit) {
 }
 
 
-const customDate = "2026-08-20T15:00:00";
+
+const customDate = `2025-08-25T15:00:00`;
+
 
 let prevDays = 0; 
 let prevHours = 0; 
@@ -29,6 +31,14 @@ function optenerFecha() {
     renderTime("minutes", minutes);
     renderTime("hours", hours);
     renderTime("seconds", seconds);  
+    
+     if (newDate <= 0) {
+        const nextDate = new Date(Date.parse(customDate));
+        nextDate.setDate(nextDate.getDate() + 8); 
+        customDate = nextDate.toISOString();
+
+        newDate = Date.parse(customDate) - Date.now();
+    }
 }
 
 const newFlip = [
