@@ -22,7 +22,7 @@ let prevMinutes = 0;
 let prevSeconds = 0; 
 
 function optenerFecha() {
-    const newDate = Date.parse(customDate) - Date.now();
+    let newDate = Date.parse(customDate) - Date.now();
     const days = Math.floor(newDate/(1000*60*60*24));
     const hours = Math.floor(newDate/(1000*60*60)%24);
     const minutes = Math.floor(newDate/(1000*60)%60);
