@@ -1,5 +1,5 @@
 function getFlipUnit(unit) {
-    const container = document.querySelector`.flip-unit.${unit}`)
+    const container = document.querySelector(`.flip-unit.${unit}`)
     return{
         top: container.querySelector(".card-face.top"),
         bottom: container.querySelector(".card-face.bottom"),
@@ -8,11 +8,17 @@ function getFlipUnit(unit) {
         flip: container.querySelector(".card-face.back-top")
     }
 }
+
+
+
 let customDate = `2025-08-25T15:00:00`;
+
+
 let prevDays = 0; 
 let prevHours = 0; 
 let prevMinutes = 0; 
 let prevSeconds = 0; 
+
 function optenerFecha() {
     let newDate = Date.parse(customDate) - Date.now();
     const days = Math.floor(newDate/(1000*60*60*24));
@@ -28,16 +34,20 @@ function optenerFecha() {
         const nextDate = new Date(Date.parse(customDate));
         nextDate.setDate(nextDate.getDate() + 8); 
         customDate = nextDate.toISOString();
+
         newDate = Date.parse(customDate) - Date.now();
     }
 }
+
 const newFlip = [
     {transform: "rotateX(0)" },
     {transform: "rotateX(180deg)" },
 ]
+
 const newFlipTiming = {
     duration: 1000
 }
+
 function  renderTime(unit, time) {
     
     const unidades = {
@@ -78,5 +88,3 @@ function  renderTime(unit, time) {
 }
 const correrTiempo = setInterval(optenerFecha,1000);
 optenerFecha();
-
-
