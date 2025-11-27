@@ -11,7 +11,7 @@ function getFlipUnit(unit) {
 
 
 
-let customDate = `2025-08-25T15:00:00`;
+let customDate = `2025-10-25T15:00:00`;
 
 
 let prevDays = 0; 
@@ -20,7 +20,21 @@ let prevMinutes = 0;
 let prevSeconds = 0; 
 
 function optenerFecha() {
-    let newDate = Date.parse(customDate) - Date.now();
+   let now = Date.now();
+    let newDate = Date.parse(customDate) - now;
+    if (newDate <= 0) {
+        let nextDate = new Date(Date.parse(customDate));
+        
+        while (nextDate.getTime() <= now) {
+            nextDate.setDate(nextDate.getDate() + 8); 
+        }
+
+
+        customDate = nextDate.toISOString();
+
+       
+        newDate = Date.parse(customDate) - now;
+    }
     const days = Math.floor(newDate/(1000*60*60*24));
     const hours = Math.floor(newDate/(1000*60*60)%24);
     const minutes = Math.floor(newDate/(1000*60)%60);
@@ -29,14 +43,7 @@ function optenerFecha() {
     renderTime("minutes", minutes);
     renderTime("hours", hours);
     renderTime("seconds", seconds);  
-    
-     if (newDate <= 0) {
-        const nextDate = new Date(Date.parse(customDate));
-        nextDate.setDate(nextDate.getDate() + 8); 
-        customDate = nextDate.toISOString();
 
-        newDate = Date.parse(customDate) - Date.now();
-    }
 }
 
 const newFlip = [
